@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Rate Loans</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(245, 245, 245);
+        }
+        .container {
+            background-color: white;
+            margin-top: 100px;
+            padding: 100px 0 100px;
+        }
+        #footerLogo {
+            height: 6em;
+            width: auto;
+        }
+        footer {
+            width: 100%;
+            margin-top: 2em;
+            padding: 20px 2em;
+            bottom: 0;
+        }
+        .usage {padding:0em 4em;}
+        @media screen and (max-width:500px) {
+            .welcome {display: none;}
+            .container {
+                margin-top: 0px;
+                text-align: center;
+            }
+            .usage {padding:0em 0.5em;}
+        }
+    </style>
+</head>
+
+<body>
+    <!--------------------------REMOVE-------------------------->
+    <br><br>
+    <!--------------------------REMOVE-------------------------->
+    <!--{% include '11steps.html' %}-->
+    <!--------------------------REMOVE-------------------------->
+    <br>
+    <!--------------------------REMOVE-------------------------->
+    <form id="formy" onsubmit="return false;">
+        {% include 'name.html' %} {% include 'state.html' %} {% include 'property_usage.html' %} {% include 'type_of_property.html' %} {% include 'approx_purchase_price.html' %} {% include 'current_prop_value.html' %}
+        {% include 'credit.html' %}{% include 'email.html' %}{% include 'phone_number.html' %}
+    </form>
+    <script>
+        function ranger(value, id_) {
+            let str = ''
+            if (value <= 60000) {
+                str = ('$60k or less');
+            }
+            else if (value >= 2000000) {
+                str = ('Over $2,000,000');
+            }
+            else {
+                str = ''
+                str += '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                str += ' to '
+                str += '$' + (parseInt(value) + 10000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            document.getElementById(id_).innerHTML = str;
+        }
+        let propertyUse = '';
+        let propertyType = '';
+        let credit = '';
+
+        function submitter() {
+            let formData = {
+                'typer': 'Cash Out',
+                'name': $("input[name=name]").val(),
+                'state': $('select[name=state]').val(),
+                'propertyUse': propertyUse,
+                'propertyType': propertyType,
+                'approxPurchasePrice': $("#approxPurchasePrice").html(),
+                'currentPropertyValue': $("#currentPropertyValue").html(),
+                'howMuchCash': $("#howMuchCash").html(),
+                'zip': $("input[name=zip]").val(),
+                'email': $("input[name=email]").val(),
+                'tel': $("input[name=tel]").val(),
+                'credit': credit
+            };
+            console.log(formData);
+            $.ajax({
+                type: "POST",
+                url: "/purchase",
+                data: JSON.stringify(formData),
+                success: function(data) {
+                    window.location.href = '/';
+                },
+                dataType: "json"
+            });
+
+        }
+        $('#formy').keypress(function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+            }
+        });
+        $(".btn-primary").click(function() {
+            if ($(this).closest(".card").length > 0 && $(this).closest(".card").find(".form-input, .form-select").is(":valid")) {
+                $($(this).parentsUntil(".container").parent()[0]).toggleClass("d-none");
+                $($(this).parentsUntil(".container").parent()[0]).next().toggleClass("d-none");
+            }
+            else if ($(this).closest(".card").length == 0) {
+                $($(this).parentsUntil(".container").parent()[0]).toggleClass("d-none");
+                $($(this).parentsUntil(".container").parent()[0]).next().toggleClass("d-none");
+            }
+        });
+        $(".img-responsive").click(function() {
+            $($(this).parentsUntil(".container").parent()[0]).toggleClass("d-none");
+            $($(this).parentsUntil(".container").parent()[0]).next().toggleClass("d-none");
+        });
+        $(".back").click(function() {
+            $($(this).parentsUntil(".container").parent()[0]).prev().toggleClass("d-none");
+            $($(this).parentsUntil(".container").parent()[0]).toggleClass("d-none");
+        });
+        $(".btn-success").click(function() {
+           if ($(this).closest(".card").find(".form-input, .form-select").is(":valid")) {
+                submitter();
+                $($(this)[0]).addClass("loading");
+                $($(this)[0]).prop("disabled", true);
+            }
+        });
+    </script>
+    {% include 'footer.html' %}
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<div class="container text-center d-none">
+    <h1>How good is your credit?</h1>
+    <div class="columns col-gapless">
+        <div class="column col-1 hide-sm"></div>
+        <div class="column col-2 col-sm-4">
+            <h3>Unknown</h3>
+            <input type="image" style="padding:0em 1em" name="dk_credit" onClick="credit='Don't Know;" value="dk" class="img-responsive" src="{{url_for('static', filename='img/Dontknow.png')}}"></input>
+        </div>
+        <div class="column col-2 col-sm-4">
+            <h3>Poor</h3>
+            <input type="image" style="padding:0em 1em" name="poor_credit" onClick="credit='Poor';" value="poor" class="img-responsive" src="{{url_for('static', filename='img/Poor.png')}}"></input>
+        </div>
+        <div class="column col-2 col-sm-4">
+            <h3>Fair</h3>
+            <input type="image" style="padding:0em 1em" name="fair_credit" onClick="credit='Fair';" value="fair" class="img-responsive" src="{{url_for('static', filename='img/Fair.png')}}"></input>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="column col-2 col-sm-4">
+            <h3>Good</h3>
+            <input type="image" style="padding:0em 1em" name="good_credit" onClick="credit='Good';" value="good" class="img-responsive" src="{{url_for('static', filename='img/Good.png')}}"></input>
+        </div>
+        <div class="column col-2 col-sm-4">
+            <h3>Excellent</h3>
+            <input type="image" style="padding:0em 1em" name="excellent_credit" onClick="credit='Excellent';" value="excellent" class="img-responsive" src="{{url_for('static', filename='img/Excellent.png')}}"></input>
+        </div>
+        <div class="column col-1 hide-sm"></div>
+    </div>
+    <div class="columns">
+        <div class="column col-3"></div>
+        <div class="column col-6">
+            <br>
+            <div class="btn-group btn-group-block">
+                <button class="btn back">Back</button>
+            </div>
+        </div>
+        <div class="column col-3"></div>
+    </div>
+</div>

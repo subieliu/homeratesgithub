@@ -1,0 +1,33 @@
+<div class="container text-center d-none">
+    <h1>Type of property?</h1>
+    <div class="columns col-gapless">
+        <div class="column col-2 hide-sm"></div>
+        <div class="column col-2 col-sm-6">
+            <h3>Single</h3>
+            <input type="image" style="padding:0em 2em" name="property_type_single" onClick="propertyType='Single';" class="img-responsive" src="{{url_for('static', filename='img/SingleHouse.png')}}"></input>
+        </div>
+        <div class="column col-2 col-sm-6">
+            <h3>2-4 Unit</h3>
+            <input type="image" style="padding:0em 2em" name="property_type_2-4unit" onClick="propertyType='2-4 Unit';" class="img-responsive" src="{{url_for('static', filename='img/2-4unit.png')}}"></input>
+        </div>
+        <div class="column col-2 col-sm-6">
+            <h3>Condo</h3>
+            <input type="image" style="padding:0em 2em" name="property_type_condo" onClick="propertyType='Condo/Townhouse';" class="img-responsive" src="{{url_for('static', filename='img/Condo.png')}}"></input>
+        </div>
+        <div class="column col-2 col-sm-6">
+            <h3>Commercial</h3>
+            <input type="image" style="padding:0em 2em" name="property_type_commercial" onClick="propertyType='Commercial';" class="img-responsive" src="{{url_for('static', filename='img/Commercial.png')}}"></input>
+        </div>
+        <div class="column col-2 hide-sm"></div>
+    </div>
+    <div class="columns">
+        <div class="column col-3"></div>
+        <div class="column col-6">
+            <br>
+            <div class="btn-group btn-group-block">
+                <button class="btn back">Back</button>
+            </div>
+        </div>
+        <div class="column col-3"></div>
+    </div>
+</div>

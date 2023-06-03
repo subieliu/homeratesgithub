@@ -1,0 +1,26 @@
+<div class="container text-center d-none">
+    <h1>Approximate current property value?</h1>
+    <h3 id="currentPropertyValue">Under $60k</h3>
+    <div class="columns col-gapless">
+        <div class="column col-2 col-sm-3 text-right">
+            <h4>$60k&ensp;</h4>
+        </div>
+        <div class="column col-8 col-sm-6">
+            <input class="slider" type="range" min="60000" max="2000000" step="5000" value="60000" oninput="ranger(this.value, 'currentPropertyValue')">
+        </div>
+        <div class="column col-2 col-sm-3 text-left">
+            <h4>&ensp;$2M+</h4>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column col-3"></div>
+        <div class="column col-6">
+            <br>
+            <div class="btn-group btn-group-block">
+                <button class="btn back">Back</button>
+                <button class="btn btn-primary">Next</button>
+            </div>
+        </div>
+        <div class="column col-3"></div>
+    </div>
+</div>

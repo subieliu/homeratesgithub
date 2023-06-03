@@ -1,0 +1,6 @@
+homeratesonline.com {
+    root /root/home-rates-today/
+    proxy / localhost:8080 {
+        transparent
+    }
+}
